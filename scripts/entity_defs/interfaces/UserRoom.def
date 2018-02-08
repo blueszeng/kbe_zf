@@ -1,0 +1,26 @@
+<root>
+	<Properties>
+	</Properties>
+
+
+	<ClientMethods>
+		<!-- 手动互动道具 -->
+		<onRecvHudong>
+			<Arg>	INT8 </Arg> <!-- fromSeat -->
+			<Arg>	INT8 </Arg> <!-- toSeat -->
+			<Arg>	INT8 </Arg> <!-- hudongID -->
+		</onRecvHudong>
+	</ClientMethods>
+
+
+	<BaseMethods>
+	</BaseMethods>
+	<CellMethods>
+		<!-- 发送互动道具 -->
+		<reqSendHudong>
+			<Exposed/>
+			<Arg>	INT8 </Arg> <!-- toSeat -->
+			<Arg>	INT8 </Arg> <!-- hudongID -->
+		</reqSendHudong>
+	</CellMethods>
+</root>

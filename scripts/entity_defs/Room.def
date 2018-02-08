@@ -1,0 +1,53 @@
+<root>
+	<Implements>
+		<!-- <Interface>	KbeCallback		</Interface> -->
+	</Implements>
+
+	<Properties>
+		<gameID>
+			<Type>		EID			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</gameID>
+		<gameName>
+			<Type>		STRING			</Type>
+			<Flags>		BASE	</Flags>
+		</gameName>
+		<gameLevel>
+			<Type>		INT8			</Type>
+			<Flags>		BASE	</Flags>
+		</gameLevel>
+		<roomState>
+			<Type>		INT8			</Type>
+			<Flags>		BASE	</Flags>
+			<Default>	0	</Default>
+		</roomState>
+		<playerCount>
+			<Type>		INT8			</Type>
+			<Flags>		BASE	</Flags>
+		</playerCount>
+	</Properties>
+
+	<BaseMethods>
+		<setRoomState>
+			<Arg>	INT8	</Arg>
+		</setRoomState>
+	</BaseMethods>
+
+	<CellMethods>
+
+		<!-- 玩家进入 -->
+		<doUserEnter>
+			<Arg>	MAILBOX	</Arg> <!-- USER -->
+			<Arg>	INT64	</Arg> <!-- gold -->
+		</doUserEnter>
+		<onUserEnter>
+			<Arg>	MAILBOX	</Arg> <!-- USER -->
+			<Arg>	INT64	</Arg> <!-- gold -->
+		</onUserEnter>
+		<!-- 创建game -->
+		<reqCreateGame>
+			<Arg>	STRING	</Arg> <!-- gameName -->
+			<Arg>	INT8	</Arg> <!-- gameLevel -->
+		</reqCreateGame>
+	</CellMethods>
+</root>

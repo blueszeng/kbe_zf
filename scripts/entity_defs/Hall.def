@@ -1,0 +1,106 @@
+<root>
+	<Implements><Interface>	KbeCallback		</Interface></Implements>
+	<Properties>
+		<!-- 金币排行榜 -->
+		<goldRank>
+			<Type>	ARRAY 
+				<of> RANK_ITEM </of>
+			</Type>
+			<Flags>			BASE				</Flags>
+			<Persistent> 	true				</Persistent>
+		</goldRank>
+		<!-- 金币排行榜信息表 -->
+		<goldRankInfos>
+			<Type>	ARRAY  <of> GOLD_RANK_ITEM </of>
+			</Type>
+			<Flags>			BASE				</Flags>
+			<Persistent> 	true				</Persistent>
+		</goldRankInfos>
+		
+		<!-- 代理用户表 -->
+		<agentUsers>
+			<Type>	ARRAY  <of> AGENT_USER </of>
+			</Type>
+			<Flags>			BASE				</Flags>
+			<Persistent> 	true				</Persistent>
+		</agentUsers>
+	</Properties>
+	<BaseMethods>
+		<!-- 保存代理账号信息 -->
+		<saveAgentUserInfo>
+			<Arg>	AGENT_USER </Arg>
+		</saveAgentUserInfo>
+
+		<onUserJoinedRoom>
+			<Arg>	EID	</Arg>
+			<Arg>	EID	</Arg>
+		</onUserJoinedRoom>
+		<doMatchByUser>
+			<Arg>	MAILBOX	</Arg>
+			<Arg>	STRING	</Arg>
+			<Arg>	INT8	</Arg>
+			<Arg>	EID	</Arg>
+		</doMatchByUser>
+		<doMatchByRoom>
+			<Arg>	MAILBOX	</Arg>
+			<Arg>	STRING	</Arg>
+			<Arg>	INT8	</Arg>
+		</doMatchByRoom>
+		<doCancelMatch>
+			<Arg>	EID	</Arg>
+		</doCancelMatch>
+
+		<getCellMailBox>
+			<Arg>	MAILBOX </Arg>
+			<Arg>	EID </Arg>
+		</getCellMailBox>
+
+		<getRoomIDs>
+			<Arg>	ARRAY  <of> EID </of> </Arg>
+		</getRoomIDs>
+
+		<!-- 金币排行榜变化 -->
+		<onGoldRankChange>
+			<Arg>	RANK_ITEM	</Arg>
+			<Arg>	GOLD_RANK_ITEM	</Arg>
+		</onGoldRankChange>
+		<!-- 请求获取排行榜 -->
+		<reqGetGoldRank>
+			<Arg>	MAILBOX	</Arg> <!-- 客户端 -->
+		</reqGetGoldRank>
+
+		<!-- 请求得到或者创建 -->
+		<!-- <getOrCreateRoom>
+			<Arg>	EID	</Arg>
+			<Arg>	STRING	</Arg>
+			<Arg>	STRING	</Arg>
+		</getOrCreateRoom> -->
+
+		<reqCreateRoom>
+			<Arg>	STRING	</Arg>
+			<Arg>	INT32	</Arg>
+			<Arg>	INT32	</Arg>
+			<Arg>	EID	</Arg>
+		</reqCreateRoom>
+		<!-- 玩家进入 -->
+		<onUserEnter>
+			<Arg>	EID	</Arg>
+		</onUserEnter>
+		<!-- 房间创建完成 -->
+		<onRoomCreated>
+			<Arg>	EID	</Arg>
+		</onRoomCreated>
+		<!-- 房间创建完成 -->
+		<onGameCreated>
+			<Arg>	EID	</Arg>
+			<!-- gameID -->
+		</onGameCreated>
+		<!-- 筛选获得房间id表 -->
+		<reqGetFiterRoomID>
+			<Arg>	ARRAY 
+				<of> EID </of>
+			</Arg>
+		</reqGetFiterRoomID>
+	</BaseMethods>
+	<CellMethods></CellMethods>
+</root>

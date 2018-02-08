@@ -1,0 +1,49 @@
+
+
+<root>
+	<Properties>
+		<!-- user dbid -->
+		<userdbid>
+			<Type>		UID			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</userdbid>
+		<!-- web server 的唯一标示 -->
+		<playerid>
+			<Type>		STRING			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</playerid>
+
+		<!-- 金币变化总和 -->
+		<goldTotal_nn>
+			<Type>		INT64			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</goldTotal_nn>
+
+		<!-- 局数总和 -->
+		<timesTotal_nn>
+			<Type>		INT32			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</timesTotal_nn>
+
+		
+	</Properties>
+
+
+	<ClientMethods>
+		
+	</ClientMethods>
+
+
+	<BaseMethods>
+		
+	</BaseMethods>
+
+	
+	<CellMethods>
+		
+	</CellMethods>
+</root>

@@ -1,0 +1,56 @@
+<root>
+<!-- 头像任务相关 -->
+	<Properties>
+		<!-- 头像解锁状态 0.未完成 1.已完成 2.已领取 -->
+		<headids>
+			<Type>		STRING			</Type>
+			<Flags>		OWN_CLIENT	</Flags>
+			<Persistent> true 		</Persistent>
+		</headids>
+		<!-- 任务进度 -->
+		<taskProgress>
+			<Type>		ARRAY <of> TASK_ITEM </of>	</Type>
+			<Flags>		OWN_CLIENT	</Flags>
+			<Persistent> true 		</Persistent>
+		</taskProgress>
+		
+		<!-- 最后登录时间，用于计算登录天数 -->
+		<lastLoginTime>
+			<Type>		TIME			</Type>
+			<Flags>		CELL_PUBLIC	</Flags>
+			<Persistent> true 		</Persistent>
+		</lastLoginTime>
+	</Properties>
+
+
+	<ClientMethods>
+		<!-- 任务达成 -->
+		<!-- <onTaskAchieve>
+			<Arg> 	INT8 </Arg>
+		</onTaskAchieve> -->
+		
+		<!-- 解锁头像 -->
+		<reqUnlockHead>
+			<Arg>	UNICODE	</Arg>
+		</reqUnlockHead>
+		<reqChangeFace>
+			<Arg>	UNICODE	</Arg>
+		</reqChangeFace>
+	</ClientMethods>
+
+
+	<BaseMethods>
+	</BaseMethods>
+	<CellMethods>
+		<!-- 解锁头像 -->
+		<reqUnlockHead>
+			<Exposed/>
+			<Arg>	INT8	</Arg>
+		</reqUnlockHead>
+		<reqChangeFace>
+			<Exposed/>
+			<Arg>	INT8	</Arg>
+		</reqChangeFace>
+
+	</CellMethods>
+</root>

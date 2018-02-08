@@ -1,0 +1,34 @@
+<root>
+<!-- 游戏基类 -->
+
+	<Properties>
+		<roomID>
+			<Type>		EID			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</roomID>
+		<gameName>
+			<Type>		STRING			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</gameName>
+		<gameLevel>
+			<Type>		INT8			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</gameLevel>
+		<!-- 倒计时：秒 -->
+		<cutdown>
+			<Type>		INT8			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</cutdown>
+		<!-- 记录时间，以矫正倒计时 -->
+		<_pastTime>
+			<Type>		INT8			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</_pastTime>
+	</Properties>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+</root>

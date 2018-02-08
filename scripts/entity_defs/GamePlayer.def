@@ -1,0 +1,59 @@
+<root>
+<!-- 游戏玩家基类 -->
+
+	<Properties>
+		<gameID>
+			<Type>		EID			</Type>
+			<Flags>		CELL_PUBLIC	</Flags>
+		</gameID>
+		<roomID>
+			<Type>		EID			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</roomID>
+
+		<!-- 用户相关 -->
+		<userID>
+			<Type>		EID		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</userID>
+		<nick>
+			<Type>		STRING		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</nick>
+		<gold>
+			<Type>		INT64		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</gold>
+		<head>
+			<Type>		STRING		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</head>
+		<uid>
+			<Type>		EID		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</uid>
+		
+		<!-- 机器人相关 -->
+		<robotUserID>
+			<Type>		EID		</Type>
+			<Flags>		CELL_PUBLIC	</Flags>
+		</robotUserID>
+
+		<!-- 座位编号 -->
+		<seat>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</seat>
+		<ready>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</ready>
+	
+	</Properties>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+</root>

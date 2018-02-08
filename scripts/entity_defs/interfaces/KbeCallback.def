@@ -1,0 +1,54 @@
+<root>
+	<Properties>
+	
+		<_kbecallbacks>
+			<Type>	ARRAY 
+				<of> PY_TUPLE </of>
+			</Type>
+			<Flags>			BASE				</Flags>
+		</_kbecallbacks>
+	</Properties>
+	<BaseMethods>
+		<addKbeCallback>
+			<Arg>	STRING </Arg>
+			<Arg>	EID </Arg>
+			<Arg>	STRING </Arg>
+		</addKbeCallback>
+
+		<onceKbe>
+			<Arg>	STRING </Arg>
+			<Arg>	MAILBOX </Arg>
+			<Arg>	STRING </Arg>
+		</onceKbe>
+
+		<!-- 通知 -->
+		<removeKbeCallback>
+			<Arg>	STRING </Arg>
+			<Arg>	EID </Arg>
+			<Arg>	STRING </Arg>
+		</removeKbeCallback>
+		
+	</BaseMethods>
+	<CellMethods>
+	
+		<addKbeCallback>
+			<Arg>	STRING </Arg>
+			<Arg>	EID </Arg>
+			<Arg>	STRING </Arg>
+		</addKbeCallback>
+
+		<onceKbe>
+			<Arg>	STRING </Arg>
+			<Arg>	MAILBOX </Arg>
+			<Arg>	STRING </Arg>
+		</onceKbe>
+
+		<!-- 通知 -->
+		<removeKbeCallback>
+			<Arg>	STRING </Arg>
+			<Arg>	EID </Arg>
+			<Arg>	STRING </Arg>
+		</removeKbeCallback>
+		
+	</CellMethods>
+</root>

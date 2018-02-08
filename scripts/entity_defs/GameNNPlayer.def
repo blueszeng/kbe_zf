@@ -1,0 +1,38 @@
+<root>
+<!-- 牛牛游戏模块 -->
+	<Parent>	GamePlayer		</Parent>
+
+	<Properties>
+		<gaming>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</gaming>
+		<!-- 手牌 -->
+		<handPoker>
+			<Type>		CARDS		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</handPoker>
+		<!-- 抢庄倍率 -->
+		<qiangRate>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</qiangRate>
+		<!-- 押注 -->
+		<yazhu>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</yazhu>
+		<!-- 牌型值 -->
+		<BroadcardTypeValue>
+			<Type>		INT32		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</BroadcardTypeValue>
+
+	</Properties>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+</root>

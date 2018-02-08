@@ -1,0 +1,133 @@
+<root>
+	<!--
+		服务端配置({assets}/res/server/kbengine.xml)
+
+		如果你需要改变引擎设置, 请在({assets}/res/server/kbengine.xml)中覆盖kbe/res/server/kbengine_defs.xml的对应参数来修改, 
+		这样的好处是不会破坏引擎的默认设置，在你更新引擎时也不会产生冲突，以及在多个逻辑项目时不会影响到其他的项目设置。
+		详细说明请参考：http://kbengine.org/cn/docs/configuration/kbengine.html
+	-->
+	<bitsPerSecondToClient> 400000 </bitsPerSecondToClient>
+	<packetAlwaysContainLength> 1 </packetAlwaysContainLength>
+	
+	<trace_packet>
+		<debug_type> 0 </debug_type>
+		<use_logfile>true</use_logfile>
+	</trace_packet>
+
+	<debugEntity>0</debugEntity>
+
+	<channelCommon>
+		<windowOverflow>
+			<receive>
+				<bytes>
+					<internal>	0			</internal>
+					<external>	8164		</external>
+				</bytes>
+			</receive>
+		</windowOverflow>
+	</channelCommon>
+	
+	<publish>
+		<!-- 发布状态, 可在脚本中获取该值。 KBEngine.publish()
+			(apps released state, This value can be obtained in the script. KBEngine.publish())
+			Type: Integer8
+			0 : debug
+			1 : release
+			其他自定义(Other custom)
+		-->
+		<state> 0 </state>
+
+		<!-- 脚本层发布的版本号
+			(Script layer released version number)
+		 -->
+		<script_version> 0.1.0 </script_version>
+	</publish>
+
+	<cellapp>
+		<coordinate_system>
+			<enable> true </enable>
+		</coordinate_system>
+
+		<defaultAoIRadius>			
+			<radius> 80.0 </radius>
+			<hysteresisArea> 0.0 </hysteresisArea>
+		</defaultAoIRadius>
+		
+	</cellapp>
+	
+	<dbmgr>
+		<account_system>
+			<!-- 账号Entity的名称 -->
+			<accountEntityScriptType>	User	</accountEntityScriptType>
+			
+			<!-- 账号注册相关
+				(Account registration)
+			-->
+			<account_registration> 
+				<!-- 是否开放注册 
+					(Whether open registration)
+				-->
+				<enable>	true	</enable>
+				
+				<!-- 登录合法时游戏数据库找不到游戏账号则自动创建 
+					(When logged in, the game database can not find the game account is automatically created)
+				-->
+				<loginAutoCreate> true </loginAutoCreate>
+			</account_registration>
+		</account_system>
+		
+		<telnet_service>
+			<port> 32000 </port>
+			<password> 123456 </password>
+			<!-- 命令默认层 
+				(layer of default the command)
+			-->
+			<default_layer> python </default_layer>
+		</telnet_service>
+
+		<databaseInterfaces>
+			<default>
+				<host> localhost </host>
+				<port> 3306 </port>
+				<auth>  
+					<username> kbe </username>									<!-- Type: String -->
+					<password> kbe </password>
+					<!-- 为true则表示password是加密(rsa)的, 可防止明文配置 
+						(is true, password is RSA)
+					-->
+					<encrypt> true </encrypt>
+				</auth>
+				<databaseName> afica </databaseName>
+			</default>
+		</databaseInterfaces>
+
+		<InterfacesServiceAddr>
+			<!-- 如果enable为false则相关数据不转发到Interfaces进程 
+				注意：如果为true，dbmgr认为数据将由interfaces交给第三方平台处理
+			-->
+			<enable> true		</enable>
+			<host>	 localhost	</host>
+			<port>	 30099		</port>
+		</InterfacesServiceAddr>
+	</dbmgr>
+	
+	<baseapp>
+		<backupPeriod> 500 </backupPeriod>
+	</baseapp>
+
+	<loginapp>
+		<encrypt_login> 2 </encrypt_login>
+	</loginapp>
+
+	<bots>
+		<account_infos>
+			<!-- 不使用随机递增 -->
+			<account_name_suffix_inc>0</account_name_suffix_inc>
+		</account_infos>
+
+		<defaultAddBots> 
+			<totalcount>1</totalcount>
+			<tickCount>1</tickCount>
+		</defaultAddBots>
+	</bots>
+</root>

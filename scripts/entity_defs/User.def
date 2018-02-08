@@ -1,0 +1,314 @@
+<root>
+	<Volatile>
+		<position>0</position>
+		<pitch>0</pitch>
+		<yaw>0</yaw>
+		<roll>0</roll>
+		<optimized>0</optimized>
+	</Volatile>
+
+	<Implements>
+		<Interface>	KbeCallback		</Interface>
+		<Interface>	UserRoom		</Interface>
+		<Interface>	UserInfo		</Interface>
+		<Interface>	UserHeadTask		</Interface>
+	</Implements>
+
+	<Properties>
+		<uid>
+			<Type>		UINT64			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</uid>
+		<nick>
+			<Type>		UNICODE			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+			<Persistent> true 		</Persistent>
+		</nick>
+		<gold>
+			<Type>		INT64			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+			<Persistent> true 		</Persistent>
+			<Default>	1000	</Default>
+		</gold>
+		<head>
+			<Type>		STRING			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+			<Persistent> true 		</Persistent>
+			<Default>		</Default>
+		</head>
+		<sex>
+			<Type>		INT8			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+			<Persistent> true 		</Persistent>
+		</sex>
+		<!-- 签名 -->
+		<signature>
+			<Type>		UNICODE			</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+			<Persistent> true 		</Persistent>
+		</signature>
+
+		<account>
+			<Type>		STRING			</Type>
+			<Flags>		BASE_AND_CLIENT	</Flags>
+		</account>
+
+		<!-- 游戏记录 -->
+		<gameMemo>
+			<Type>	ARRAY <of> GAME_MEMO </of>	</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</gameMemo>
+
+		<!-- 充值记录 -->
+		<chargeMemo>
+			<Type>	ARRAY <of> CHARGE_MEMO </of>	</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</chargeMemo>
+
+		<!-- 匹配状态 -->
+		<matchState>
+			<Type>		INT8			</Type>
+			<Flags>		BASE_AND_CLIENT	</Flags>
+		</matchState>
+	</Properties>
+
+	<ClientMethods>
+		<!-- 消息提示 -->
+		<onMsgTips>
+			<Arg>	INT8	</Arg> <!-- 提示id -->
+			<Arg>	UNICODE	</Arg> <!-- 提示内容 -->
+		</onMsgTips>
+
+		<onDebugCmd>
+			<Arg>	STRING	</Arg> <!--  -->
+		</onDebugCmd>
+
+		<!-- client 进入房间 -->
+		<onEnterRoom>
+			<Arg>	STRING	</Arg> <!-- 失败原因 -->
+		</onEnterRoom>
+
+		<onRoomPlayerChat>
+			<Exposed/>
+			<Arg>	EID	</Arg> <!-- 玩家id -->
+			<Arg>	INT16	</Arg> <!-- 内容id -->
+			<Arg>	STRING	</Arg> <!-- 内容 -->
+		</onRoomPlayerChat>
+
+		<gameNN_fapai>
+			<!-- count 发牌数量 -->
+			<Arg>	INT8	</Arg> 
+			<!-- myCards 自己的手牌 -->
+			<Arg>	CARDS	</Arg> 
+			<!-- allPokers 全部手牌 -->
+			<Arg>	ARRAY <of> CARDS </of> </Arg> 
+		</gameNN_fapai>
+
+		<onGameNNOwnerPoker>
+			<Arg>	CARDS	</Arg>
+		</onGameNNOwnerPoker>
+		<onGameNNYazhuAble>
+			<Arg>	ARRAY <of> UINT8 </of>	</Arg> <!-- 可选倍率 -->
+		</onGameNNYazhuAble>
+
+		<!-- 玩家牌型值 -->
+		<cardTypeValue>
+			<Arg>	UINT32	</Arg>
+		</cardTypeValue>
+
+		<!-- 获取游戏记录列表 -->
+		<onGotGameMemo>
+			<Arg>	INT32	</Arg> <!-- 起始idx -->
+			<Arg>	INT32	</Arg> <!-- 数量 -->
+			<Arg>	ARRAY <of> GAME_MEMO </of>	</Arg>
+		</onGotGameMemo>
+		<!-- 回应匹配场次信息 -->
+		<onGotMatchInfos>
+			<!-- 牛牛场次 -->
+			<Arg>	ARRAY <of> MATCH_NN_INFO </of>	</Arg>
+		</onGotMatchInfos>
+
+		<!-- 回应保险柜信息 -->
+		<onGotSaveinfo>
+			<Arg>  INT32 	</Arg> <!-- 保险柜金币数 -->
+			<Arg>  INT32 	</Arg> <!-- successed -->
+		</onGotSaveinfo>
+		<!-- 回应ShowText -->
+		<onTextTip>
+			<Arg>  STRING 	</Arg>
+		</onTextTip>
+		<!-- 返回修改保险柜密码 -->
+		<onAlterPassword>
+			<Arg>  INT8 	</Arg>
+		</onAlterPassword>
+		<!-- 玩家登录列表-->
+		<onGotLoginInfo>
+			<Arg>	INT32	</Arg> <!-- 起始idx -->
+			<Arg>	INT32	</Arg> <!-- 总数 -->
+			<Arg>	ARRAY <of> LOGINRECORD </of>	</Arg>
+		</onGotLoginInfo>
+
+		<!--client 获取充值记录 -->
+		<onChargeMemo>
+			<Arg>	INT32	</Arg> <!-- 起始idx -->
+			<Arg>	INT32	</Arg> <!-- 总数 -->
+			<Arg>	ARRAY <of> CHARGE_MEMO </of>	</Arg>
+		</onChargeMemo>
+
+		<onGoldRank>
+			<Arg>	ARRAY  	<of> GOLD_RANK_INFO_ITEM </of> </Arg>
+		</onGoldRank>
+
+	</ClientMethods>
+
+	<BaseMethods>
+		<!-- 请求获取排行榜 -->
+		<reqGetGoldRank>
+			<Exposed/>
+		</reqGetGoldRank>
+
+		<reqDebugCmd>
+			<Exposed/>
+			<Arg>	STRING	</Arg> <!--  -->
+		</reqDebugCmd>
+		<!-- 登出请求 -->
+		<reqLoginOut>
+			<Exposed/>
+		</reqLoginOut>
+		<!-- 切换房间 -->
+		<doChangeRoom>
+			<Arg>	EID	</Arg> <!-- 当前房间id -->
+		</doChangeRoom>
+
+		<!-- client 匹配场次信息 -->
+		<reqGetMatchInfos>
+			<Exposed/>
+			<Arg>	INT8	</Arg> <!-- 游戏名称 -->
+		</reqGetMatchInfos>
+
+		<reqNewRoomID>
+			<Exposed/>
+		</reqNewRoomID>
+
+		<!-- client 进入房间 -->
+		<reqEnterRoom>
+			<Exposed/>
+			<Arg>	EID	</Arg> <!-- 房间ID -->
+		</reqEnterRoom>
+
+		<onRoomCreated>
+			<Arg>	EID	</Arg>
+		</onRoomCreated>
+		
+		<!-- client 开始游戏 -->
+		<reqStartGame>
+			<Exposed/>
+			<Arg>	STRING	</Arg>
+			<Arg>	INT8	</Arg>
+		</reqStartGame>
+
+		<!-- 保存游戏记录 -->
+		<doSaveGameMemo>
+			<Arg>	GAME_MEMO	</Arg>
+		</doSaveGameMemo>
+		<!-- 请求获得游戏记录列表 -->
+		<reqGotGameMemo>
+			<Exposed/>
+			<Arg>	INT32	</Arg> <!-- 起始idx -->
+			<Arg>	INT32	</Arg> <!-- 数量 -->
+		</reqGotGameMemo>
+
+		<onGoldChange>
+			<Arg>	INT64	</Arg> <!-- 金币变化金额 -->
+		</onGoldChange>
+		<!-- 保存充值记录 -->
+		<doSaveChargeMemo>
+			<Arg>	CHARGE_MEMO	</Arg>
+		</doSaveChargeMemo>
+		<!--client 获取充值记录 -->
+		<reqChargeMemo>
+			<Exposed/>
+			<Arg>	INT32	</Arg> <!-- 起始idx -->
+			<Arg>	INT32	</Arg> <!-- 数量 -->
+		</reqChargeMemo>
+	</BaseMethods>
+
+	<CellMethods>
+		<onGotCellMailBox>
+			<Exposed/>
+			<Arg>	EID	</Arg>
+			<Arg>	MAILBOX	</Arg>
+		</onGotCellMailBox>
+
+		<!--client 保存保险金 -->
+		<reqSaveGold>
+			<Exposed/>
+			<Arg>	INT32	</Arg>
+		</reqSaveGold>
+		<reqDrawSaveGold>
+			<Exposed/>
+			<Arg>	INT32	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqDrawSaveGold>
+
+		<!-- 请求修改签名 -->
+		<reqChangeSignature>
+			<Exposed/>
+			<Arg>	UNICODE	</Arg>
+		</reqChangeSignature>
+		
+		<reqDebugCmd>
+			<Exposed/>
+			<Arg>	STRING	</Arg> <!--  -->
+		</reqDebugCmd>
+		<onClientOffline>
+		</onClientOffline>
+		<onClientReconnect>
+		</onClientReconnect>
+		
+		<!-- 进入房间 -->
+		<doEnterRoom>
+			<Arg>	EID	</Arg> <!-- 房间ID -->
+			<Arg>	MAILBOX	</Arg> <!-- 房间mb -->
+		</doEnterRoom>
+		<!-- 退出房间 -->
+		<reqQuitRoom>
+			<Exposed/>
+			<Arg>	EID	</Arg> <!-- 房间ID -->
+		</reqQuitRoom>
+
+		<reqRoomSeatdown>
+			<Exposed/>
+			<Arg>	INT8	</Arg> <!-- 优先座位号 -->
+		</reqRoomSeatdown>
+
+		<!-- 换桌 -->
+		<reqChangeRoom>
+			<Exposed/>
+		</reqChangeRoom>
+		<!-- 请求在房间里说话 -->
+		<reqRoomChat>
+			<Exposed/>
+			<Arg>	INT16	</Arg> <!-- 内容id -->
+			<Arg>	STRING	</Arg> <!-- 内容 -->
+		</reqRoomChat>
+
+		<!-- 请求瞬移 -->
+		<reqTeleport>
+			<Arg>	EID	</Arg> <!-- 目标id -->
+			<Arg>	MAILBOX	</Arg> <!-- 目标 -->
+		</reqTeleport>
+
+		<reqGameNNQiang>
+			<Exposed/>
+			<Arg>	UINT8	</Arg> <!-- 抢倍率 -->
+		</reqGameNNQiang>
+		<reqGameNNYazhu>
+			<Exposed/>
+			<Arg>	UINT8	</Arg> <!-- 倍率 -->
+		</reqGameNNYazhu>
+
+	</CellMethods>
+</root>

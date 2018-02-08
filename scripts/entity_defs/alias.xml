@@ -1,0 +1,171 @@
+<root>
+	<UID>           INT64		</UID>
+	<DBID>			UID		    </DBID>
+	<EID>     INT32		</EID>
+	<SPACE_ID>      UINT32		</SPACE_ID>
+	<BOOL>          UINT8		</BOOL>
+	<TIME>          INT32		</TIME>
+	
+	<!-- 房间玩家信息 -->
+	<ROOMPLAYER> FIXED_DICT
+		<Properties>
+			<uid> <Type>	EID	</Type> </uid>
+			<nick> <Type>	STRING	</Type> </nick>
+			<score> <Type>	INT64	</Type> </score>
+		</Properties>
+	</ROOMPLAYER>
+
+	<!-- 扑克牌 个位为花色, 十位百位为牌号 -->
+	<CARD>	UINT8	</CARD>
+	<CARDS>	ARRAY <of> CARD </of>	</CARDS>
+
+	<!-- 时间标记 -->
+	<TIME_MARK> FIXED_DICT
+		<Properties>
+			<val> <Type>	INT8	</Type> </val>
+			<time> <Type>	FLOAT	</Type> </time>
+		</Properties>
+	</TIME_MARK>
+
+	<!-- 牛牛匹配场次信息 -->
+	<MATCH_NN_INFO> FIXED_DICT
+		<Properties>
+			<gameLevel> <Type>	INT8	</Type> </gameLevel>  <!-- 	游戏等级 -->
+			<able> <Type>	INT8	</Type> </able>  <!-- 	能否进入 -->
+			<baseScore> <Type>	INT32	</Type> </baseScore>  <!-- 	底分 -->
+			<goldMin> <Type>	INT32	</Type> </goldMin>  <!-- 	最低金币要求 -->
+			<goldMax> <Type>	INT32	</Type> </goldMax>  <!-- 	最高金币要求 -->
+		</Properties>
+	</MATCH_NN_INFO>
+
+	<!-- 输赢 -->
+	<WIN_LOSE>	FIXED_DICT
+		<Properties>
+			<seat> <Type>	INT8	</Type> </seat>
+			<value> <Type>	INT32	</Type> </value>
+		</Properties>
+	</WIN_LOSE>
+
+	<!-- 结算信息 -->
+	<SETTLE_ITEM> FIXED_DICT
+		<Properties>
+			<seat> <Type>	INT8	</Type> </seat>
+			<nick> <Type>	STRING	</Type> </nick>
+			<value> <Type>	INT32	</Type> </value>
+		</Properties>
+	</SETTLE_ITEM>
+	<SETTLEMENT> FIXED_DICT
+		<Properties>
+			<items> <Type>	ARRAY <of> SETTLE_ITEM </of>	</Type> </items>
+		</Properties>
+	</SETTLEMENT>
+
+	<!-- 个人信息 -->
+	<USERINFO> FIXED_DICT
+		<Properties>
+			<uid> <Type>	UINT64	</Type> </uid>
+			<gold> <Type>	INT64	</Type> </gold>
+			<phone> <Type>	STRING	</Type> </phone>
+			<nick> <Type>	STRING	</Type> </nick>
+		</Properties>
+	</USERINFO>
+
+	<!-- 游戏记录 -->
+	<GAME_MEMO> FIXED_DICT
+		<Properties>
+			<time> <Type>	STRING	</Type> </time>
+			<gameName> <Type>	STRING	</Type> </gameName>
+			<win> <Type>	INT32	</Type> </win>
+		</Properties>
+	</GAME_MEMO>
+
+
+	<!-- 充值记录 -->
+	<CHARGE_MEMO> FIXED_DICT
+		<Properties>
+			<id> <Type>	STRING	</Type> </id>
+			<num> <Type>	INT32	</Type> </num>
+			<charge> <Type>	INT8	</Type> </charge>
+			<time> <Type>	INT32	</Type> </time>
+			<state> <Type>	INT8	</Type> </state>
+		</Properties>
+	</CHARGE_MEMO>
+
+	<!-- 金幣取現记录 -->
+	<GOLDDRAW_MEMO> FIXED_DICT
+		<Properties>
+			<id> <Type>		STRING	</Type> </id>
+			<time> <Type>	INT32	</Type> </time>
+			<num> <Type>	INT32	</Type> </num>
+			<!-- 取现状态，0.成功 1.取现中 2.失败  -->
+			<state> <Type>	INT8	</Type> </state>
+		</Properties>
+	</GOLDDRAW_MEMO>
+
+	<!-- 登录记录 -->
+	<LOGINRECORD> FIXED_DICT
+		<Properties>
+			<id> <Type>	INT32	</Type> </id>
+			<time> <Type>	INT32	</Type> </time>
+			<ip> <Type>	STRING	</Type> </ip>
+		</Properties>
+	</LOGINRECORD>
+
+	<!-- 排行榜 ITEM -->
+	<RANK_ITEM> FIXED_DICT
+		<Properties>
+			<uid> <Type>	DBID	</Type> </uid>
+			<time> <Type>	TIME	</Type> </time>
+			<value> <Type>	INT64	</Type> </value>
+		</Properties>
+	</RANK_ITEM>
+
+	<!-- 金币排行榜 -->
+	<GOLD_RANK_ITEM> FIXED_DICT
+		<Properties>
+			<idx> <Type>	INT16	</Type> </idx>
+			<uid> <Type>	DBID	</Type> </uid>
+			<nick> <Type>	STRING	</Type> </nick>
+			<head> <Type>	STRING	</Type> </head>
+			<signature> <Type>	STRING	</Type> </signature>
+		</Properties>
+	</GOLD_RANK_ITEM>
+
+	<!-- 金币排行榜信息(往客户端) -->
+	<GOLD_RANK_INFO_ITEM> FIXED_DICT
+		<Properties>
+			<idx> <Type>	INT16	</Type> </idx>
+			<gold> <Type>	INT64	</Type> </gold>
+			<nick> <Type>	STRING	</Type> </nick>
+			<head> <Type>	STRING	</Type> </head>
+			<signature> <Type>	STRING	</Type> </signature>
+		</Properties>
+	</GOLD_RANK_INFO_ITEM>
+
+	<!-- 任务项 -->
+	<TASK_ITEM> FIXED_DICT
+		<Properties>
+			<id> <Type>	INT8	</Type> </id>
+			<clear> <Type>	INT8	</Type> </clear>
+			<type> <Type>	INT8	</Type> </type>
+			<goal> 	<Type>	INT32	</Type> </goal>
+			<had> <Type>	INT32	</Type> </had>
+		</Properties>
+	</TASK_ITEM>
+
+	<AGENT_USER> FIXED_DICT
+		<Properties>
+			<account> <Type>	STRING	</Type> </account>
+			<dbid> 	<Type>	DBID	</Type> </dbid>
+			<playerid> <Type>	UID	</Type> </playerid>
+		</Properties>
+	</AGENT_USER>
+
+	<BANKINFO> FIXED_DICT
+		<Properties>
+			<name> <Type>	UNICODE	</Type> </name>
+			<bank> 	<Type>	UNICODE	</Type> </bank>
+			<bankNum> <Type>	STRING	</Type> </bankNum>
+		</Properties>
+	</BANKINFO>
+</root>

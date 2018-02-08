@@ -1,0 +1,17 @@
+<root>
+	<!--
+		实体注册文件(<你的资产库>/scripts/entities.xml)
+		详细说明请参考：http://kbengine.org/cn/docs/configuration/entities.html
+					http://www.kbengine.org/cn/docs/programming/entitydef.html
+	-->
+
+	<!-- <用户对象/> -->
+	<User hasClient="true"></User><!-- <Account hasCell="true" hasBase="true" hasClient="true"></Account> -->
+	<Hall></Hall>
+	<AgentUser></AgentUser>
+	<Game></Game>
+	<GamePlayer></GamePlayer>
+	<Room hasClient="true"></Room>
+	<GameNN hasClient="true"></GameNN>
+	<GameNNPlayer hasClient="true"></GameNNPlayer>
+</root>

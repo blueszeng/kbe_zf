@@ -1,0 +1,46 @@
+<root>
+<!-- 牛牛游戏模块 -->
+	<Parent>	Game		</Parent>
+
+	<Properties>
+		<!-- 底分 -->
+		<baseScore>
+			<Type>		INT32		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</baseScore>
+		<nnState>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</nnState>
+		<qiangMax>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</qiangMax>
+		<!-- 备选庄家 -->
+		<candidate>
+			<Type>		ARRAY <of> INT8 </of>	</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</candidate>
+		<!-- 庄家座位号 -->
+		<bankerSeat>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</bankerSeat>
+		<!-- 庄家倍率 -->
+		<bankerRate>
+			<Type>		INT8		</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</bankerRate>
+		<!-- 结算 -->
+		<settlement>
+			<Type>		SETTLEMENT	</Type>
+			<Flags>		ALL_CLIENTS	</Flags>
+		</settlement>
+	</Properties>
+
+	<BaseMethods>
+	</BaseMethods>
+
+	<CellMethods>
+	</CellMethods>
+</root>

@@ -1,0 +1,260 @@
+<root>
+	<Properties>
+		<!-- 账号信息初始化标志 -->
+		<userInfoFlag>
+			<Type>		STRING			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</userInfoFlag>
+		<!-- 账号类型 test_login/nick_login/wx_login_code -->
+		<accountType>
+			<Type>		STRING			</Type>
+			<Flags>		BASE	</Flags>
+			<Persistent> true 		</Persistent>
+		</accountType>
+		<!-- 账号信息 json str -->
+		<accountData>
+			<Type>		UNICODE			</Type>
+			<Flags>		BASE			</Flags>
+			<Persistent> true 			</Persistent>
+		</accountData>
+		<accountDataCell>
+			<Type>		UNICODE			</Type>
+			<Flags>		CELL_PUBLIC			</Flags>
+		</accountDataCell>
+		<!-- 代理账号数据库 -->
+		<agentdbid>
+			<Type>		UID			</Type>
+			<Flags>		BASE			</Flags>
+			<Persistent> true			</Persistent>
+		</agentdbid>
+		
+		<!-- 電話 -->
+		<phone>
+			<Type>		STRING			</Type>
+			<Flags>		BASE_AND_CLIENT	</Flags>
+			<Persistent> true			</Persistent>
+		</phone>
+
+		<!-- 登录记录 -->
+		<loginMemo>
+			<Type>		ARRAY <of> LOGINRECORD </of>			</Type>
+			<Flags>		BASE			</Flags>
+		</loginMemo>
+
+		<!-- 保险柜金币 -->
+		<safeGold>
+			<Type>		 INT64			</Type>
+			<Flags>		 OWN_CLIENT		</Flags>
+			<Persistent> true			</Persistent>
+		</safeGold>
+		<safePassword>
+			<Type>		 STRING			</Type>
+			<Flags>		 CELL_PUBLIC		</Flags>
+			<Persistent> true			</Persistent>
+		</safePassword>
+
+		<_bankInfo>
+			<Type>		BANKINFO	</Type>
+			<Flags>		CELL_PUBLIC			</Flags>
+			<Persistent> true			</Persistent>
+		</_bankInfo>
+
+		<!-- 金幣取現記錄 -->
+		<_goldDrawMemo>
+			<Type>		ARRAY <of> GOLDDRAW_MEMO </of>			</Type>
+			<Flags>		BASE			</Flags>
+			<Persistent> true			</Persistent>
+		</_goldDrawMemo>
+		
+		<!-- 代理取现记录 -->
+		<_agentDrawMemo>
+			<Type>		ARRAY <of> GOLDDRAW_MEMO </of>			</Type>
+			<Flags>		BASE			</Flags>
+			<Persistent> true			</Persistent>
+		</_agentDrawMemo>
+	</Properties>
+
+
+	<ClientMethods>
+		<!-- 获取支付订单 -->
+		<onChargeOrder>
+			<Arg>	STRING	</Arg> <!-- partnerID -->
+			<Arg>	STRING	</Arg> <!-- prepay_id -->
+			<Arg>	STRING	</Arg> <!-- nonce_str -->
+			<Arg>	STRING	</Arg> <!-- sign -->
+			<Arg>	STRING	</Arg> <!-- time -->
+		</onChargeOrder>
+		<!-- 查询到支付结果 -->
+		<onGotChargeResult>
+			<Arg>	STRING	</Arg> <!-- 交易状态 -->
+		</onGotChargeResult>
+
+
+		<!-- 获取支付Url -->
+		<onGotChargeUrl>
+			<Arg>	UNICODE	</Arg>
+		</onGotChargeUrl>
+
+		
+		<!-- 登录记录 -->
+		<onGetLoginMemo>
+			<!-- 当前idx -->
+			<Arg>	INT8	</Arg>
+			<!-- 总数 -->
+			<Arg>	INT8	</Arg>
+			<Arg>	ARRAY <of> LOGINRECORD </of>	</Arg>
+		</onGetLoginMemo>
+
+		<reqChangeGoldPass>
+			<Arg>	UNICODE	</Arg>
+		</reqChangeGoldPass>
+		
+		<!-- 金幣取現 回應 -->
+		<reqGoldDraw>
+			<Arg>	INT8	</Arg>
+			<Arg>	UNICODE	</Arg>
+		</reqGoldDraw>
+		<reqGoldDrawMemo>
+			<!-- 当前idx -->
+			<Arg>	INT8	</Arg>
+			<!-- 总数 -->
+			<Arg>	INT16	</Arg>
+			<Arg>	ARRAY <of> GOLDDRAW_MEMO </of>	</Arg>
+		</reqGoldDrawMemo>
+
+		<!-- 绑定银行卡 -->
+		<reqBindBankCard>
+			<Arg>	INT8	</Arg>
+			<Arg>	UNICODE	</Arg>
+		</reqBindBankCard>
+
+		<!-- 代理取現回应 -->
+		<reqAgentDraw>
+			<Arg>	INT8	</Arg>
+			<Arg>	UNICODE	</Arg>
+		</reqAgentDraw>
+
+		<reqAgentDrawMemo>
+			<!-- 当前idx -->
+			<Arg>	INT8	</Arg>
+			<!-- 总数 -->
+			<Arg>	INT16	</Arg>
+			<Arg>	ARRAY <of> GOLDDRAW_MEMO </of>	</Arg>
+		</reqAgentDrawMemo>
+
+	</ClientMethods>
+
+
+	<BaseMethods>
+		<!-- 获取支付订单 -->
+		<reqChargeOrder>
+			<Exposed/>
+			<Arg>	INT8	</Arg> <!-- 类型 -->
+			<Arg>	INT32	</Arg> <!-- 数量 -->
+		</reqChargeOrder>
+
+		<!-- 得到支付结果 -->
+		<reqGetChargeResult>
+			<Exposed/>
+			<Arg>	STRING	</Arg> <!-- 目标订单 -->
+		</reqGetChargeResult>
+		
+		<!-- cell 通知结果 -->
+		<onChargeResult>
+			<Arg>	INT8	</Arg>
+			<Arg>	STRING	</Arg>
+		</onChargeResult>
+
+		<!-- 登录记录 -->
+		<reqGetLoginMemo>
+			<Exposed/>
+			<Arg>	INT8	</Arg> <!-- 开始索引 -->
+			<Arg>	INT8	</Arg> <!-- 每页数量 -->
+		</reqGetLoginMemo>
+
+		<!-- 保存金幣取現記錄 -->
+		<onSaveGoldDrawMemo>
+			<!-- num -->
+			<Arg>	INT32	</Arg>
+		</onSaveGoldDrawMemo>
+
+		<reqGoldDrawMemo>
+			<Exposed/>
+			<!-- idx -->
+			<Arg>	INT8	</Arg>
+			<!-- page --> 
+			<Arg>	INT8	</Arg>
+		</reqGoldDrawMemo>
+
+		<reqAgentDraw>
+			<Arg>	INT32	</Arg>
+		</reqAgentDraw>
+
+		<reqAgentDrawMemo>
+			<Exposed/>
+			<!-- idx -->
+			<Arg>	INT8	</Arg>
+			<!-- page --> 
+			<Arg>	INT8	</Arg>
+		</reqAgentDrawMemo>
+
+	</BaseMethods>
+
+	
+	<CellMethods>
+		<!--client 充值金币 -->
+		<reqChargeGold>
+			<Arg>	INT32	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqChargeGold>
+
+		<!-- 账号信息更新 -->
+		<doUpdAccountData>
+			<Arg>	UNICODE </Arg> <!-- accountData -->
+		</doUpdAccountData>
+
+		<!-- 由Keys得到信息 -->
+		<getDictByKeys>
+			<Arg>	STRING </Arg> <!-- keys -->
+			<Arg>	MAILBOX </Arg> <!-- MAILBOX -->
+			<Arg>	STRING </Arg> <!-- callName -->
+		</getDictByKeys>
+
+		<!-- 修改昵称 -->
+		<reqChangeNick>
+			<Exposed/>
+			<Arg>	UNICODE	</Arg>
+		</reqChangeNick>
+
+		<!-- 修改取款密码 oldpass, newpass -->
+		<reqChangeGoldPass>
+			<Exposed/>
+			<Arg>	STRING	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqChangeGoldPass>
+		
+		<!-- 金幣取現 -->
+		<reqGoldDraw>
+			<Exposed/>
+			<Arg>	INT32	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqGoldDraw>
+
+		<!-- 绑定银行卡 -->
+		<reqBindBankCard>
+			<Exposed/>
+			<Arg>	STRING	</Arg>
+			<Arg>	STRING	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqBindBankCard>
+		
+		<!-- 代理取現 -->
+		<reqAgentDraw>
+			<Exposed/>
+			<Arg>	INT32	</Arg>
+			<Arg>	STRING	</Arg>
+		</reqAgentDraw>
+
+	</CellMethods>
+</root>
