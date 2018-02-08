@@ -91,7 +91,7 @@
 				<port> 3306 </port>
 				<auth>  
 					<username> kbe </username>									<!-- Type: String -->
-					<password> kbe </password>
+					<password> aazs96232963 </password>
 					<!-- 为true则表示password是加密(rsa)的, 可防止明文配置 
 						(is true, password is RSA)
 					-->
